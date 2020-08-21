@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
 
 /// <summary>
 /// Class PlayerController, that manages the movement of the player
@@ -17,6 +19,8 @@ public class PlayerController : MonoBehaviour
     public float batDetectRadius = 2f;
     [Tooltip("Attack radius of the bat")]
     public float batAttackRadius = 0.2f;
+    [Tooltip("Rotation speed")]
+    public float rotationSpeed = 12f;
 
     [Space]
 
@@ -33,13 +37,16 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private BatBehaviour batBehaviour;
 
+    [Tooltip("Other characters in the scene")]
+    private List<CharacterBehaviour> allOtherCharacters;
+
     /// <summary>
-    /// Method Awake, that executes on script load
+    /// Method Start, that executes before the first frame
     /// </summary>
-    private void Awake()
+    private void Start()
     {
-        // Get the player's rigidbody
-        rb = this.GetComponent<Rigidbody2D>();
+        // Find other characters in the scene
+        allOtherCharacters = FindObjectsOfType<CharacterBehaviour>().ToList<CharacterBehaviour>();
     }
 
     /// <summary>
@@ -69,24 +76,23 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void FixedUpdate()
     {
-        // Move the player
+        // Move and rotate the player
         rb.MovePosition(rb.position + movement * Time.fixedDeltaTime);
-        Debug.Log(Time.fixedDeltaTime);
+        this.transform.right = Vector2.Lerp(new Vector2(this.transform.right.x, this.transform.right.y), movement.normalized, Time.fixedDeltaTime * rotationSpeed);
     }
-    
+
     /// <summary>
     /// Method BatToClosestCharacter, that finds the closest character
     /// </summary>
-    /// <returns>A Vector2 with the position of the closest character</returns>
+    /// <returns>A Vector2 with the force to the closest character</returns>
     private Vector2 BatToClosestCharacter()
     {
         // Get all other characters
         float distanceToClosestCharacter = Mathf.Infinity;
         CharacterBehaviour closestCharacter = null;
-        CharacterBehaviour[] allOtherCharacters = FindObjectsOfType<CharacterBehaviour>();
 
         // If there are no other characters, force is zero
-        if (allOtherCharacters.Length == 0)
+        if (allOtherCharacters.Count == 0)
             return Vector2.zero;
 
         // Search for the closest character
@@ -104,7 +110,7 @@ public class PlayerController : MonoBehaviour
         if (distanceToClosestCharacter > batDetectRadius)
             return Vector2.zero;
 
-        // Draw a line between the player and the closest character(debug)
+        // Draw a line between the player and the closest character (debug)
         Debug.DrawLine(this.transform.position, closestCharacter.transform.position);
 
         // Calculate and return the attract force
