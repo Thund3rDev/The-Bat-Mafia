@@ -12,12 +12,13 @@ public class PlayerController : MonoBehaviour
     [Tooltip("Player's base speed")]
     public float moveSpeed = 3f;
     [Tooltip("Bat's attract force")]
-    public float batForce = 0.2f;
+    public float batAttractForce = 0.2f;
     [Tooltip("Character radius detector of the bat")]
     public float batDetectRadius = 2f;
     [Tooltip("Attack radius of the bat")]
     public float batAttackRadius = 0.2f;
 
+    [Space]
 
     [Tooltip("Vector of player input")]
     private Vector2 playerInput;
@@ -27,6 +28,10 @@ public class PlayerController : MonoBehaviour
     private Vector2 movement;
     [Tooltip("Distance to the closestCharacter")]
     private float distanceToTheClosestCharacter;
+
+    [Space]
+
+    [SerializeField] private BatBehaviour batBehaviour;
 
     /// <summary>
     /// Method Awake, that executes on script load
@@ -52,11 +57,11 @@ public class PlayerController : MonoBehaviour
         batForcesInput.Normalize();
 
         // If distance to the closest character is lesser than bat attack radius, attack
-        if (distanceToTheClosestCharacter < batAttackRadius)
+        if (distanceToTheClosestCharacter > 0 && distanceToTheClosestCharacter < batAttackRadius)
             Attack(batForcesInput);
-
+        
         // Calculate the movement vector
-        movement = playerInput * moveSpeed + batForcesInput * batForce;
+        movement = playerInput * moveSpeed + batForcesInput * batAttractForce;
     }
 
     /// <summary>
@@ -74,7 +79,7 @@ public class PlayerController : MonoBehaviour
     /// <param name="direction">Direction to attack</param>
     private void Attack(Vector2 direction)
     {
-
+        batBehaviour.Attack(direction);
     }
     
     /// <summary>
@@ -85,15 +90,15 @@ public class PlayerController : MonoBehaviour
     {
         // Get all other characters
         float distanceToClosestCharacter = Mathf.Infinity;
-        Character closestCharacter = null;
-        Character[] allOtherCharacters = FindObjectsOfType<Character>();
+        CharacterBehaviour closestCharacter = null;
+        CharacterBehaviour[] allOtherCharacters = FindObjectsOfType<CharacterBehaviour>();
 
         // If there are no other characters, force is zero
         if (allOtherCharacters.Length == 0)
             return Vector2.zero;
 
         // Search for the closest character
-        foreach (Character currentCharacter in allOtherCharacters)
+        foreach (CharacterBehaviour currentCharacter in allOtherCharacters)
         {
             float distanceToCharacter = (currentCharacter.transform.position - this.transform.position).magnitude;
             if (distanceToCharacter < distanceToClosestCharacter)
