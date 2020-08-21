@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GunmanBehaviour : MonoBehaviour
+public class GunmanBehaviour : EnemyBehaviour
 {
     #region Classes
     private enum GunmanState

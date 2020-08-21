@@ -71,6 +71,7 @@ public class PlayerController : MonoBehaviour
     {
         // Move the player
         rb.MovePosition(rb.position + movement * Time.fixedDeltaTime);
+        Debug.Log(Time.fixedDeltaTime);
     }
 
     /// <summary>
