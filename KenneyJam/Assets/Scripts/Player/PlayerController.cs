@@ -58,8 +58,8 @@ public class PlayerController : MonoBehaviour
 
         // If distance to the closest character is lesser than bat attack radius, attack
         if (distanceToTheClosestCharacter > 0 && distanceToTheClosestCharacter < batAttackRadius)
-            Attack(batForcesInput);
-        
+            batBehaviour.Attack(batForcesInput);
+
         // Calculate the movement vector
         movement = playerInput * moveSpeed + batForcesInput * batAttractForce;
     }
@@ -72,15 +72,6 @@ public class PlayerController : MonoBehaviour
         // Move the player
         rb.MovePosition(rb.position + movement * Time.fixedDeltaTime);
         Debug.Log(Time.fixedDeltaTime);
-    }
-
-    /// <summary>
-    /// Attack with the bat to the given direction
-    /// </summary>
-    /// <param name="direction">Direction to attack</param>
-    private void Attack(Vector2 direction)
-    {
-        batBehaviour.Attack(direction);
     }
     
     /// <summary>
