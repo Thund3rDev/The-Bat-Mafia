@@ -50,7 +50,7 @@ public class AllyBehaviour : CharacterBehaviour
         distanceToTheClosestEnemy = repelForceInput.magnitude;
 
         // If enemy is in the fear radius, run away from it
-        if (distanceToTheClosestEnemy < enemyFearRadius)
+        if (distanceToTheClosestEnemy > float.Epsilon && distanceToTheClosestEnemy < enemyFearRadius)
         {
             // Normalize the repel force and calculate the movement
             repelForceInput.Normalize();

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Animations;
 
 /// <summary>
 /// Class PlayerController, that manages the movement of the player
@@ -30,6 +31,10 @@ public class PlayerController : MonoBehaviour
     private Vector2 batForcesInput;
     [Tooltip("Vector of final movement")]
     private Vector2 movement;
+    [Tooltip("Vector of the mouse position")]
+    private Vector2 mousePosition;
+    [Tooltip("Vector of the relative mouse position")]
+    private Vector2 relativeMousePosition;
     [Tooltip("Distance to the closestCharacter")]
     private float distanceToTheClosestCharacter;
 
@@ -58,13 +63,18 @@ public class PlayerController : MonoBehaviour
         playerInput.x = Input.GetAxisRaw("Horizontal");
         playerInput.y = Input.GetAxisRaw("Vertical");
 
+        // Get the mouse position and its relative position to player, then normalize
+        mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        relativeMousePosition = mousePosition - new Vector2(this.transform.position.x, this.transform.position.y);
+        relativeMousePosition.Normalize();
+
         // Get the bat forces, get the distance and normalize the forces
         batForcesInput = BatToClosestCharacter();
         distanceToTheClosestCharacter = batForcesInput.magnitude;
         batForcesInput.Normalize();
 
         // If distance to the closest character is lesser than bat attack radius, attack
-        if (distanceToTheClosestCharacter > 0 && distanceToTheClosestCharacter < batAttackRadius)
+        if (distanceToTheClosestCharacter > float.Epsilon && distanceToTheClosestCharacter < batAttackRadius)
             batBehaviour.Attack(batForcesInput);
 
         // Calculate the movement vector
@@ -78,7 +88,11 @@ public class PlayerController : MonoBehaviour
     {
         // Move and rotate the player
         rb.MovePosition(rb.position + movement * Time.fixedDeltaTime);
-        this.transform.right = Vector2.Lerp(new Vector2(this.transform.right.x, this.transform.right.y), movement.normalized, Time.fixedDeltaTime * rotationSpeed);
+        Debug.Log(mousePosition);
+        if (distanceToTheClosestCharacter < float.Epsilon)
+            this.transform.right = Vector2.Lerp(new Vector2(this.transform.right.x, this.transform.right.y), relativeMousePosition, Time.fixedDeltaTime * rotationSpeed);
+        else
+            this.transform.right = Vector2.Lerp(new Vector2(this.transform.right.x, this.transform.right.y), batForcesInput, Time.fixedDeltaTime * rotationSpeed);
     }
 
     /// <summary>
