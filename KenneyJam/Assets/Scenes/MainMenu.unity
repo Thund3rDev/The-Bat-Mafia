@@ -946,7 +946,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: The Cursed Batter
+  m_text: The Bats' Mafia
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c2ef01c1942059a44b42c4e89ef2f5d4, type: 2}
   m_sharedMaterial: {fileID: -7811983862247944132, guid: c2ef01c1942059a44b42c4e89ef2f5d4,
@@ -1016,7 +1016,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: -36.928696, w: 0}
   m_textInfo:
     textComponent: {fileID: 370378518}
-    characterCount: 17
+    characterCount: 15
     spriteCount: 0
     spaceCount: 2
     wordCount: 3
@@ -1606,7 +1606,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: The Cursed Batter, made for KenneyJam 2020
+  m_text: The Bats's mafia, made for KenneyJam 2020
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c2ef01c1942059a44b42c4e89ef2f5d4, type: 2}
   m_sharedMaterial: {fileID: -7811983862247944132, guid: c2ef01c1942059a44b42c4e89ef2f5d4,
@@ -1676,12 +1676,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 880195390}
-    characterCount: 32
+    characterCount: 41
     spriteCount: 0
-    spaceCount: 4
-    wordCount: 5
+    spaceCount: 6
+    wordCount: 7
     linkCount: 0
-    lineCount: 2
+    lineCount: 3
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
