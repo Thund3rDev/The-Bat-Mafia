@@ -277,7 +277,7 @@ TextureImporter:
         width: 29
         height: 8
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -298,7 +298,7 @@ TextureImporter:
         width: 29
         height: 8
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -319,7 +319,7 @@ TextureImporter:
         width: 29
         height: 8
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -340,7 +340,7 @@ TextureImporter:
         width: 29
         height: 8
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -348,6 +348,27 @@ TextureImporter:
       bones: []
       spriteID: 1faa7d36042948900800000000000000
       internalID: 685833848517798641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sheet_equipment_4
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 24
+        width: 19
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9129367db555b6740800000000000000
+      internalID: 5146300852144935449
       vertices: []
       indices: 
       edges: []
