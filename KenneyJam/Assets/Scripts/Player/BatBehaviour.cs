@@ -5,6 +5,8 @@ using UnityEngine;
 public class BatBehaviour : MonoBehaviour
 {
     #region Variables
+    private bool isAttacking = false;
+
     [Header("Bat parameters")]
     [SerializeField] private float pushForce;
 
@@ -24,25 +26,27 @@ public class BatBehaviour : MonoBehaviour
     #region Methods
     public void Attack(Vector2 dir)
     {
-        if (PlayerController.instance.isAttacking)
+        if (isAttacking)
             return;
 
-        PlayerController.instance.isAttacking = true;
+        isAttacking = true;
         anim.Play("Base Layer.BatAnimation");
         //SoundsManager._instance.PlaySoundBat();
+
+        container.up = dir;
     }
 
     public void StopAttacking()
     {
-        PlayerController.instance.isAttacking = false;
+        isAttacking = false;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!PlayerController.instance.isAttacking)
+        if (!isAttacking)
             return;
 
-        if (collision.CompareTag("Character"))
+        if (collision.CompareTag("Enemy") || collision.CompareTag("Ally"))
         {
             CharacterBehaviour cb = collision.GetComponent<CharacterBehaviour>();
             cb.Push(((Vector2)(collision.transform.position - player.position)).normalized * pushForce);
