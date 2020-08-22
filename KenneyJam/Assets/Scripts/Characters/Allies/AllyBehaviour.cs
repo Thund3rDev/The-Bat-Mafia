@@ -31,9 +31,6 @@ public class AllyBehaviour : CharacterBehaviour
     /// </summary>
     private void Update()
     {
-        if (isDying || GameManager._instance.isEnding)
-            return;
-
         // Calculate the distance to the closest
         repelForceInput = AllyToClosestEnemy();
         distanceToTheClosestEnemy = repelForceInput.magnitude;
@@ -70,9 +67,6 @@ public class AllyBehaviour : CharacterBehaviour
     /// </summary>
     private void FixedUpdate()
     {
-        if (isDying)
-            return;
-
         // Move and rotate the ally
         rb.MovePosition(rb.position + movement * Time.fixedDeltaTime);
         this.transform.right = Vector2.Lerp(new Vector2(this.transform.right.x, this.transform.right.y), movement.normalized, Time.fixedDeltaTime * rotationSpeed);
@@ -112,12 +106,6 @@ public class AllyBehaviour : CharacterBehaviour
         // Calculate and return the repel force
         Vector2 force = this.transform.position - closestEnemy.transform.position;
         return force;
-    }
-
-    public override void Die()
-    {
-        base.Die();
-        GameManager._instance.IncreaseAlliesKilled();
     }
 
     /// <summary>

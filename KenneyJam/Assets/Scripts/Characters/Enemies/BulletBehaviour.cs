@@ -7,10 +7,6 @@ public class BulletBehaviour : MonoBehaviour
     #region Variables
     [Header("Components references")]
     [SerializeField] private Rigidbody2D rb;
-    [SerializeField] private Collider2D col;
-    [SerializeField] private SpriteRenderer spr;
-    [SerializeField] private Animator anim;
-    [SerializeField] private ParticleSystem ps;
     #endregion
 
     #region Methods
@@ -24,7 +20,7 @@ public class BulletBehaviour : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            collision.GetComponent<PlayerController>().Die();
+            //collision.GetComponent<PlayerController>().Die();
         }
         else if (collision.CompareTag("Character"))
         {
@@ -35,15 +31,7 @@ public class BulletBehaviour : MonoBehaviour
 
     private void DestroyBullet()
     {
-        rb.isKinematic = true;
-        col.enabled = false;
-        spr.enabled = false;
-        ps.Stop();
-        anim.Play("Base Layer.Destroy");
-    }
-
-    private void DestroyObject()
-    {
+        // Provisional:
         Destroy(gameObject);
     }
     #endregion

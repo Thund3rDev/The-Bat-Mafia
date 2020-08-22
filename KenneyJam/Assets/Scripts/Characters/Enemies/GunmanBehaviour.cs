@@ -47,7 +47,7 @@ public class GunmanBehaviour : EnemyBehaviour
 
     private void Update()
     {
-        if (isDying || GameManager._instance.isEnding)
+        if (isDying)
             return;
 
         switch(state)
@@ -157,7 +157,6 @@ public class GunmanBehaviour : EnemyBehaviour
         newBullet.GetComponent<BulletBehaviour>().Shoot(
             ((Vector2)(player.position - bulletSpawner.position)).normalized, bulletVelocity);
     }
-
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
@@ -169,13 +168,6 @@ public class GunmanBehaviour : EnemyBehaviour
             Gizmos.DrawLine(transform.position, transform.position +
                 (player.position - transform.position).normalized * distanceToShoot);
 
-        Gizmos.color = Color.green;
-        Gizmos.DrawLine(transform.position, transform.position + (Quaternion.AngleAxis(visionAngle / 2, Vector3.forward) * (transform.right)).normalized * distanceToShoot);
-        Gizmos.DrawLine(transform.position, transform.position + (Quaternion.AngleAxis(-visionAngle / 2, Vector3.forward) * (transform.right)).normalized * distanceToShoot);
-    }
-
-    private void OnDrawGizmos()
-    {
         Gizmos.color = Color.blue;
         if (positionsToWander.Length > 0)
         {
@@ -187,6 +179,10 @@ public class GunmanBehaviour : EnemyBehaviour
             }
             Gizmos.DrawLine(positionsToWander[positionsToWander.Length - 1], positionsToWander[0]);
         }
+
+        Gizmos.color = Color.green;
+        Gizmos.DrawLine(transform.position, transform.position + (Quaternion.AngleAxis(visionAngle / 2, Vector3.forward) * (transform.right)).normalized * distanceToShoot);
+        Gizmos.DrawLine(transform.position, transform.position + (Quaternion.AngleAxis(-visionAngle / 2, Vector3.forward) * (transform.right)).normalized * distanceToShoot);
     }
     #endregion
 }
