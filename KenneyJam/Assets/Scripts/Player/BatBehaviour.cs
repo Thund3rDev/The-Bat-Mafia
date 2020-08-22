@@ -7,12 +7,18 @@ public class BatBehaviour : MonoBehaviour
     #region Variables
     private bool isAttacking = false;
 
+    [Header("Bat parameters")]
+    [SerializeField] private float pushForce;
+
+    [Space]
+
     [Header("Components references")]
     [SerializeField] private Animator anim;
 
     [Space]
 
     [Header("Objects references")]
+    [SerializeField] private Transform player;
     [SerializeField] private Transform container;
     [SerializeField] private TrailRenderer trail;
     #endregion
@@ -42,7 +48,9 @@ public class BatBehaviour : MonoBehaviour
 
         if (collision.CompareTag("Character"))
         {
-            //collision.GetComponent<CharacterBehaviour>().Die();
+            CharacterBehaviour cb = collision.GetComponent<CharacterBehaviour>();
+            cb.Push(((Vector2)(collision.transform.position - player.position)).normalized * pushForce);
+            cb.Die();
         }
     }
     #endregion

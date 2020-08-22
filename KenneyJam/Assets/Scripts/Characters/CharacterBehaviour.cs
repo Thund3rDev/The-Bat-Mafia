@@ -5,10 +5,26 @@ using UnityEngine;
 public class CharacterBehaviour : MonoBehaviour
 {
     #region Variables
-    
+    [SerializeField] protected Animator anim;
+    [SerializeField] protected Rigidbody2D rb;
+    protected bool isDying = false;
     #endregion
-    public virtual void Die()
-    {
 
+    #region Methods
+    public void Die()
+    {
+        isDying = true;
+        anim.Play("Base Layer.Dying");
     }
+
+    public void DestroyObject()
+    {
+        Destroy(gameObject);
+    }
+
+    public void Push(Vector2 force)
+    {
+        rb.AddForce(force);
+    }
+    #endregion
 }

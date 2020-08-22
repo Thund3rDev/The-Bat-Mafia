@@ -6,9 +6,6 @@ using UnityEngine.Animations;
 
 public class AllyBehaviour : CharacterBehaviour
 {
-    [Tooltip("Rigidbody of ally")]
-    public Rigidbody2D rb;
-
     [Header("Force values")]
     [Tooltip("Ally's base speed")]
     public float moveSpeed = 2f;

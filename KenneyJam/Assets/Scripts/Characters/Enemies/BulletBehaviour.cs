@@ -22,10 +22,15 @@ public class BulletBehaviour : MonoBehaviour
         {
             //collision.GetComponent<PlayerController>().Die();
         }
-        else if (collision.CompareTag("Ally") || collision.CompareTag("Enemy"))
+        else if (collision.CompareTag("Character"))
         {
             collision.GetComponent<CharacterBehaviour>().Die();
         }
+        DestroyBullet();
+    }
+
+    private void DestroyBullet()
+    {
         // Provisional:
         Destroy(gameObject);
     }
