@@ -11,13 +11,19 @@ public class CharacterBehaviour : MonoBehaviour
     #endregion
 
     #region Methods
-    public void Die()
+    public bool IsDying()
+    {
+        return isDying;
+    }
+
+    public virtual void Die()
     {
         isDying = true;
         anim.Play("Base Layer.Dying");
-        if (this.CompareTag("Enemy"))
-            EnemyList.instance.allEnemies.Remove(this.GetComponent<EnemyBehaviour>());
+    }
 
+    public virtual void DeleteCharacter()
+    {
         PlayerController.instance.allOtherCharacters.Remove(this);
     }
 
@@ -29,6 +35,8 @@ public class CharacterBehaviour : MonoBehaviour
     public void Push(Vector2 force)
     {
         rb.AddForce(force);
+        rb.freezeRotation = true;
     }
+
     #endregion
 }
