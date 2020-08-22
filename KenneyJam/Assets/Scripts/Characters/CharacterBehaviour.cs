@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class CharacterBehaviour : MonoBehaviour
 {
+    #region Variables
+    
+    #endregion
     public virtual void Die()
     {
 

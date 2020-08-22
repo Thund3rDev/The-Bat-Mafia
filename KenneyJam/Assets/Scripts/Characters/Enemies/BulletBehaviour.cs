@@ -26,6 +26,8 @@ public class BulletBehaviour : MonoBehaviour
         {
             collision.GetComponent<CharacterBehaviour>().Die();
         }
+        // Provisional:
+        Destroy(gameObject);
     }
     #endregion
 }

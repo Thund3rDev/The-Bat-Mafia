@@ -41,6 +41,7 @@ public class PlayerController : MonoBehaviour
     [Space]
 
     [SerializeField] private BatBehaviour batBehaviour;
+    [SerializeField] private Animator anim;
 
     [Tooltip("Other characters in the scene")]
     private List<CharacterBehaviour> allOtherCharacters;
@@ -79,6 +80,8 @@ public class PlayerController : MonoBehaviour
 
         // Calculate the movement vector
         movement = playerInput * moveSpeed + batForcesInput * batAttractForce;
+
+        anim.SetBool("IsMoving", playerInput.magnitude > 0);
     }
 
     /// <summary>
@@ -88,7 +91,7 @@ public class PlayerController : MonoBehaviour
     {
         // Move and rotate the player
         rb.MovePosition(rb.position + movement * Time.fixedDeltaTime);
-        Debug.Log(mousePosition);
+        //Debug.Log(mousePosition);
         if (distanceToTheClosestCharacter < float.Epsilon)
             this.transform.right = Vector2.Lerp(new Vector2(this.transform.right.x, this.transform.right.y), relativeMousePosition, Time.fixedDeltaTime * rotationSpeed);
         else
