@@ -21,21 +21,10 @@ public class AllyBehaviour : CharacterBehaviour
     [Tooltip("Vector of movement")]
     private Vector2 movement;
 
-    [Tooltip("Enemies in the scene")]
-    private List<EnemyBehaviour> allEnemies;
     [Tooltip("Distance to the closest enemy")]
     private float distanceToTheClosestEnemy;
     [Tooltip("Time for the next random move")]
     private float nextRandomMove = 0.0f;
-
-    /// <summary>
-    /// Method Start, that executes before the first frame
-    /// </summary>
-    private void Start()
-    {
-        // Find all enemies in the scene
-        allEnemies = FindObjectsOfType<EnemyBehaviour>().ToList<EnemyBehaviour>();
-    }
 
     /// <summary>
     /// Method Update, that executes once per frame
@@ -93,11 +82,11 @@ public class AllyBehaviour : CharacterBehaviour
         EnemyBehaviour closestEnemy = null;
 
         // If there are no enemies, force is infinity
-        if (allEnemies.Count == 0)
+        if (EnemyList.instance.allEnemies.Count == 0)
             return Vector2.positiveInfinity;
 
         // Search for the closest enemy
-        foreach (EnemyBehaviour currentEnemy in allEnemies)
+        foreach (EnemyBehaviour currentEnemy in EnemyList.instance.allEnemies)
         {
             float distanceToEnemy = (currentEnemy.transform.position - this.transform.position).magnitude;
             if (distanceToEnemy < distanceToClosestEnemy)

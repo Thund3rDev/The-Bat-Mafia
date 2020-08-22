@@ -1,19 +1,26 @@
 ﻿using System;
 using UnityEngine;
 
-// Class AudioManager, that controls all audio in the game.
+/// <summary>
+/// Class AudioManager, that controls all audio in the game
+/// </summary>
 public class AudioManager : MonoBehaviour
 {
+    [Tooltip("Singleton")]
+    [HideInInspector]
     public static AudioManager instance;
 
+    [Tooltip("All music in the game")]
     public Audio[] music;
+    [Tooltip("All sounds in the game")]
     public Audio[] sounds;
 
-    // On Awake, instance itselft and if there is another, destroy it.
-    // Then, set to don't destroy on load.
-    // Also gets all the data from the sounds.
+    /// <summary>
+    /// Method Awake, that executes on script load
+    /// </summary>
     void Awake()
     {
+        // Instance itself
         if (instance == null)
         {
             instance = this;
@@ -24,11 +31,13 @@ public class AudioManager : MonoBehaviour
             return;
         }
 
+        // Set to don't destroy on load
         DontDestroyOnLoad(this);
 
+        // Set the info of each audio
         foreach (Audio a in music)
         {
-            a.source = gameObject.AddComponent<AudioSource>();
+            a.source = gameObject.AddComponent<AudioSource>(); ;
             a.source.clip = a.clip;
 
             a.source.volume = a.volume;
@@ -38,7 +47,7 @@ public class AudioManager : MonoBehaviour
 
         foreach (Audio a in sounds)
         {
-            a.source = gameObject.AddComponent<AudioSource>();
+            a.source = gameObject.AddComponent<AudioSource>(); ;
             a.source.clip = a.clip;
 
             a.source.volume = a.volume;
@@ -47,7 +56,12 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    // If we need to do something on a sound, we call this function.
+    /// <summary>
+    /// Method Manage audio, that do everything with audio
+    /// </summary>
+    /// <param name="name">Name of the audio</param>
+    /// <param name="type">Type of audio (music/sound)</param>
+    /// <param name="action">Action to do</param>
     public void ManageAudio(string name, string type, string action)
     {
         if (type == "music")

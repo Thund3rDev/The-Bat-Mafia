@@ -15,6 +15,10 @@ public class CharacterBehaviour : MonoBehaviour
     {
         isDying = true;
         anim.Play("Base Layer.Dying");
+        if (this.CompareTag("Enemy"))
+            EnemyList.instance.allEnemies.Remove(this.GetComponent<EnemyBehaviour>());
+
+        PlayerController.instance.allOtherCharacters.Remove(this);
     }
 
     public void DestroyObject()

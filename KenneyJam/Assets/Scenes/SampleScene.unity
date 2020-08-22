@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 69476370}
   m_Layer: 0
   m_Name: Gunman (3)
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -232,7 +232,7 @@ GameObject:
   - component: {fileID: 160007620}
   m_Layer: 0
   m_Name: Gunman
-  m_TagString: Character
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -581,7 +581,7 @@ GameObject:
   - component: {fileID: 732591511}
   m_Layer: 0
   m_Name: Gunman (1)
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1530,6 +1530,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5084378727462814697, guid: 3f10006cf18f5044eb2ae07aa7513456,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ally
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3f10006cf18f5044eb2ae07aa7513456, type: 3}
 --- !u!4 &1157211116 stripped
@@ -1842,6 +1847,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5084378727462814697, guid: 3f10006cf18f5044eb2ae07aa7513456,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ally
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3f10006cf18f5044eb2ae07aa7513456, type: 3}
 --- !u!4 &1610692961 stripped
@@ -2022,6 +2032,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1690192830}
+  - component: {fileID: 1690192831}
   m_Layer: 0
   m_Name: Enemies
   m_TagString: Untagged
@@ -2047,6 +2058,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1690192831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1690192829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36e45f1845bbc6d47a89263e4c289f7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allEnemies: []
 --- !u!1 &1693754045
 GameObject:
   m_ObjectHideFlags: 0
@@ -2108,6 +2132,7 @@ MonoBehaviour:
   rotationSpeed: 12
   batBehaviour: {fileID: 2114124448}
   anim: {fileID: 1693754048}
+  allOtherCharacters: []
 --- !u!95 &1693754048
 Animator:
   serializedVersion: 3
@@ -2314,7 +2339,7 @@ GameObject:
   - component: {fileID: 1962987616}
   m_Layer: 0
   m_Name: Gunman (2)
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2468,6 +2493,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5084378727462814697, guid: 3f10006cf18f5044eb2ae07aa7513456,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ally
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3f10006cf18f5044eb2ae07aa7513456, type: 3}
@@ -2738,6 +2768,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Ally 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5084378727462814697, guid: 3f10006cf18f5044eb2ae07aa7513456,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ally
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3f10006cf18f5044eb2ae07aa7513456, type: 3}

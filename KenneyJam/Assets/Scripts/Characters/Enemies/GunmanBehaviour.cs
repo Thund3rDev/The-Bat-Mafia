@@ -157,7 +157,7 @@ public class GunmanBehaviour : EnemyBehaviour
         newBullet.GetComponent<BulletBehaviour>().Shoot(
             ((Vector2)(player.position - bulletSpawner.position)).normalized, bulletVelocity);
     }
-    private void OnDrawGizmos()
+    private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, distanceToShoot);

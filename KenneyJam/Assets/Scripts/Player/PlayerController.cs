@@ -8,6 +8,10 @@ using UnityEngine.Animations;
 /// </summary>
 public class PlayerController : MonoBehaviour
 {
+    [Tooltip("Singleton")]
+    [HideInInspector]
+    public static PlayerController instance;
+
     [Tooltip("Rigidbody2D of player")]
     public Rigidbody2D rb;
 
@@ -43,8 +47,16 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private BatBehaviour batBehaviour;
     [SerializeField] private Animator anim;
 
-    [Tooltip("Other characters in the scene")]
-    private List<CharacterBehaviour> allOtherCharacters;
+    [Tooltip("List of other characters in the scene")]
+    public List<CharacterBehaviour> allOtherCharacters;
+
+    /// <summary>
+    /// Method Awake, that executes on script load
+    /// </summary>
+    private void Awake()
+    {
+        instance = this;
+    }
 
     /// <summary>
     /// Method Start, that executes before the first frame

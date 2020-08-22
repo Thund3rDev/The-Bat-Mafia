@@ -46,7 +46,7 @@ public class BatBehaviour : MonoBehaviour
         if (!isAttacking)
             return;
 
-        if (collision.CompareTag("Character"))
+        if (collision.CompareTag("Enemy") || collision.CompareTag("Ally"))
         {
             CharacterBehaviour cb = collision.GetComponent<CharacterBehaviour>();
             cb.Push(((Vector2)(collision.transform.position - player.position)).normalized * pushForce);
