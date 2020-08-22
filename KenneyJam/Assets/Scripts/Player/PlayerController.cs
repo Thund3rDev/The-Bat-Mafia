@@ -91,7 +91,6 @@ public class PlayerController : MonoBehaviour
     {
         // Move and rotate the player
         rb.MovePosition(rb.position + movement * Time.fixedDeltaTime);
-        //Debug.Log(mousePosition);
         if (distanceToTheClosestCharacter < float.Epsilon)
             this.transform.right = Vector2.Lerp(new Vector2(this.transform.right.x, this.transform.right.y), relativeMousePosition, Time.fixedDeltaTime * rotationSpeed);
         else
