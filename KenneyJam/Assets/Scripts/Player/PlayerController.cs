@@ -27,6 +27,8 @@ public class PlayerController : MonoBehaviour
     [Tooltip("Rotation speed")]
     public float rotationSpeed = 12f;
 
+    [HideInInspector]
+    public bool isAttacking = false;
     [Space]
 
     [Tooltip("Vector of player input")]
@@ -46,6 +48,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private BatBehaviour batBehaviour;
     [SerializeField] private Animator anim;
+    private bool isDying;
 
     [Tooltip("List of other characters in the scene")]
     public List<CharacterBehaviour> allOtherCharacters;
@@ -65,6 +68,8 @@ public class PlayerController : MonoBehaviour
     {
         // Find other characters in the scene
         allOtherCharacters = FindObjectsOfType<CharacterBehaviour>().ToList<CharacterBehaviour>();
+
+        isDying = false;
     }
 
     /// <summary>
@@ -72,6 +77,9 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void Update()
     {
+        if (isDying || GameManager._instance.isEnding)
+            return;
+
         // Get the player's input
         playerInput.x = Input.GetAxisRaw("Horizontal");
         playerInput.y = Input.GetAxisRaw("Vertical");
@@ -101,6 +109,9 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void FixedUpdate()
     {
+        if (isDying || GameManager._instance.isEnding)
+            return;
+
         // Move and rotate the player
         rb.MovePosition(rb.position + movement * Time.fixedDeltaTime);
         if (distanceToTheClosestCharacter < float.Epsilon)
@@ -127,13 +138,19 @@ public class PlayerController : MonoBehaviour
         foreach (CharacterBehaviour currentCharacter in allOtherCharacters)
         {
             float distanceToCharacter = (currentCharacter.transform.position - this.transform.position).magnitude;
+            if (currentCharacter.IsDying())
+            {
+                distanceToClosestCharacter = distanceToCharacter;
+                closestCharacter = currentCharacter;
+                break;
+            }
             if (distanceToCharacter < distanceToClosestCharacter)
             {
                 distanceToClosestCharacter = distanceToCharacter;
                 closestCharacter = currentCharacter;
             }
         }
-
+        
         // If distance to closest character is greater than bat radius, force is zero
         if (distanceToClosestCharacter > batDetectRadius)
             return Vector2.zero;
@@ -144,6 +161,17 @@ public class PlayerController : MonoBehaviour
         // Calculate and return the attract force
         Vector2 force = closestCharacter.transform.position - this.transform.position;
         return force;
+    }
+
+    public void EndGameAfterDying()
+    {
+        GameManager._instance.EndGame(true);
+    }
+
+    public void Die()
+    {
+        isDying = true;
+        anim.Play("Base Layer.PlayerDying");
     }
 
     /// <summary>
