@@ -32,7 +32,11 @@ public class AllyBehaviour : CharacterBehaviour
     private void Update()
     {
         if (isDying || GameManager._instance.isEnding)
+        {
+            if (GameManager._instance.isEnding)
+                anim.enabled = false;
             return;
+        }
 
         // Calculate the distance to the closest
         repelForceInput = AllyToClosestEnemy();

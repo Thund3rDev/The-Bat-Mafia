@@ -28,8 +28,12 @@ public class GameManager : MonoBehaviour
     [Space]
 
     [SerializeField] private GameObject endScreen;
+
+    [SerializeField] private GameObject inGameMenu;
+
     [SerializeField] private TextMeshProUGUI resultTitleText;
     [SerializeField] private TextMeshProUGUI resultText;
+
     [SerializeField] private GameObject results;
     [SerializeField] private TextMeshProUGUI enemiesKilledTextEnd;
     [SerializeField] private TextMeshProUGUI alliesKilledTextEnd;
@@ -45,6 +49,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        inGameMenu.SetActive(true);
         endScreen.SetActive(false);
         initTime = Time.time;
         numEnemiesKilled = 0;
@@ -54,7 +59,8 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        timeText.text = ((int) Mathf.Round(Time.time - initTime)).ToString();
+        if (!isEnding)
+            timeText.text = ((int) Mathf.Round(Time.time - initTime)).ToString();
     }
 
     public void IncreaseEnemiesKilled()
@@ -76,6 +82,8 @@ public class GameManager : MonoBehaviour
 
         isEnding = true;
         endScreen.SetActive(true);
+        inGameMenu.SetActive(false);
+
         if (died)
         {
             results.SetActive(false);

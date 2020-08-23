@@ -50,7 +50,10 @@ public class GunmanBehaviour : EnemyBehaviour
         if (isDying || GameManager._instance.isEnding)
         {
             if (GameManager._instance.isEnding)
+            {
                 rb.velocity = Vector2.zero;
+                anim.enabled = false;
+            }
             return;
         }
 
