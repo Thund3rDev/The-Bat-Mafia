@@ -2449,7 +2449,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 12, y: 1}
+  m_AnchoredPosition: {x: 12, y: 28}
   m_SizeDelta: {x: 400, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &880195390
@@ -2466,7 +2466,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -3846,7 +3846,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 12, y: -171.3}
+  m_AnchoredPosition: {x: 12, y: -135}
   m_SizeDelta: {x: 400, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1300777559
@@ -3941,7 +3941,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1300777559}
-    characterCount: 60
+    characterCount: 59
     spriteCount: 0
     spaceCount: 9
     wordCount: 10
@@ -4810,7 +4810,7 @@ GameObject:
   - component: {fileID: 1664490092}
   - component: {fileID: 1664490091}
   m_Layer: 0
-  m_Name: KenneyCredits
+  m_Name: CreditsAssetsText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4832,7 +4832,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -250}
+  m_AnchoredPosition: {x: 0, y: -181}
   m_SizeDelta: {x: 340, y: 130}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1664490091
@@ -4853,7 +4853,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: All assets by Kenney.nl
+  m_text: 'Graphic assets from kenney.nl
+
+    Music from fesliyanstudios.com
+
+    Sounds
+    from kenney.nl / http://dustyroom.com/'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b133c04d7ee746541bc8963e5d2ed3dc, type: 2}
   m_sharedMaterial: {fileID: 5390603849371387510, guid: b133c04d7ee746541bc8963e5d2ed3dc,
@@ -4889,12 +4894,12 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_textAlignment: 258
+  m_textAlignment: 257
   m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
-  m_paragraphSpacing: 0
+  m_paragraphSpacing: 40
   m_charWidthMaxAdj: 0
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
@@ -4920,15 +4925,15 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -59.454254, y: 0, z: -59.750122, w: 0}
+  m_margin: {x: -20.972748, y: 0, z: -29.285639, w: 0}
   m_textInfo:
     textComponent: {fileID: 1664490091}
-    characterCount: 23
+    characterCount: 106
     spriteCount: 0
-    spaceCount: 3
-    wordCount: 5
+    spaceCount: 11
+    wordCount: 16
     linkCount: 0
-    lineCount: 1
+    lineCount: 4
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0

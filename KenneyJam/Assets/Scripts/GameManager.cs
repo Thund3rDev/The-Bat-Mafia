@@ -106,7 +106,7 @@ public class GameManager : MonoBehaviour
             resultText.text = "You defeated the Bat Mafia and got rid of the curse.";
             enemiesKilledTextEnd.text = numEnemiesKilled.ToString();
             alliesKilledTextEnd.text = numAlliesKilled.ToString();
-            timeTextEnd.text = finalTime.ToString();
+            timeTextEnd.text = (Time.time - initTime).ToString();
             scoreText.text = finalScore.ToString();
         }
     }
