@@ -16,7 +16,7 @@ public class CameraController : MonoBehaviour
     {
         if (GameManager._instance.isEnding)
             return;
-        //Debug.Log(Input.mousePosition + " --- " + Screen.width + " " + Screen.height);
+        
         targetDir = (Vector2) Input.mousePosition - new Vector2(Screen.width / 2, Screen.height / 2);
         targetDir.x = Mathf.Clamp(targetDir.x, -Screen.width / 2, Screen.width / 2);
         targetDir.y = Mathf.Clamp(targetDir.y, -Screen.height / 2, Screen.height / 2);
@@ -25,6 +25,9 @@ public class CameraController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (GameManager._instance.isEnding)
+            return;
+
         Vector2 playerPos = PlayerController.instance.transform.position;
         Vector3 newPos = playerPos + targetDir * maxCameraMovement;
         newPos.z = -10;
