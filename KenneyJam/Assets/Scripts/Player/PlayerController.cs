@@ -120,6 +120,11 @@ public class PlayerController : MonoBehaviour
             this.transform.right = Vector2.Lerp(new Vector2(this.transform.right.x, this.transform.right.y), batForcesInput, Time.fixedDeltaTime * rotationSpeed);
     }
 
+    private void PlayDieSound()
+    {
+        AudioManager.instance.PlaySound("playerDie");
+    }
+
     /// <summary>
     /// Method BatToClosestCharacter, that finds the closest character
     /// </summary>

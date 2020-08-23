@@ -87,6 +87,7 @@ public class GameManager : MonoBehaviour
         if (died)
         {
             results.SetActive(false);
+            AudioManager.instance.PlaySound("loseGame");
             resultTitleText.text = "You lost!";
             resultText.text = "The Bat Mafia has killed you and got the demon bat back.";
         }
@@ -100,6 +101,7 @@ public class GameManager : MonoBehaviour
             finalScore = Mathf.Max(0, finalScore);
 
             results.SetActive(true);
+            AudioManager.instance.PlaySound("winGame");
             resultTitleText.text = "You won!";
             resultText.text = "You defeated the Bat Mafia and got rid of the curse.";
             enemiesKilledTextEnd.text = numEnemiesKilled.ToString();

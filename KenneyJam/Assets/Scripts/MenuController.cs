@@ -5,7 +5,7 @@
 /// </summary>
 public class MenuController : MonoBehaviour
 {
-    public static float musicVolume = 1.0f;
+    public static float musicVolume = 0.3f;
 
     /// <summary>
     /// Method Start, that executes before the first frame
