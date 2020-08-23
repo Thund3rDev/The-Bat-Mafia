@@ -77,7 +77,7 @@ public class GunmanBehaviour : EnemyBehaviour
             case GunmanState.Shooting:
                 if (GetDistanceFromPlayer() > distanceToShoot || !IsSeeingPlayer())
                 {
-                    timeShotCounter = timeBetweenShot - firstShotDelay;
+                    timeShotCounter = 0;
                     anim.SetBool("IsShooting", false);
                     state = GunmanState.Idle;
                     return;

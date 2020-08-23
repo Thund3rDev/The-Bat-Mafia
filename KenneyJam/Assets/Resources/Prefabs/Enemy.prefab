@@ -51,7 +51,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 2055405787767336065}
   rb: {fileID: 2055405787767336064}
-  firstShotDelay: 0.2
+  firstShotDelay: 0.5
   timeBetweenShot: 1.5
   bulletVelocity: 5
   distanceToShoot: 5
