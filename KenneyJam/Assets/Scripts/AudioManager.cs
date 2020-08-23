@@ -56,6 +56,28 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        Audio a = Array.Find(music, sound => sound.name == "mainTheme");
+        if (a == null)
+        {
+            Debug.LogWarning("Sound: " + name + " not found!");
+            return;
+        }
+        a.source.volume = MenuController.musicVolume * LevelChanger._instance.soundLevel;
+    }
+
+    private void Update()
+    {
+        Audio a = Array.Find(music, sound => sound.name == "mainTheme");
+        if (a == null)
+        {
+            Debug.LogWarning("Sound: " + name + " not found!");
+            return;
+        }
+        a.source.volume = MenuController.musicVolume * LevelChanger._instance.soundLevel;
+    }
+
     /// <summary>
     /// Method Manage audio, that do everything with audio
     /// </summary>

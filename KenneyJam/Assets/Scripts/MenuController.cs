@@ -5,6 +5,8 @@
 /// </summary>
 public class MenuController : MonoBehaviour
 {
+    public static float musicVolume = 1.0f;
+
     /// <summary>
     /// Method Start, that executes before the first frame
     /// </summary>
@@ -27,6 +29,7 @@ public class MenuController : MonoBehaviour
     /// <param name="volume">New volume value</param>
     public void SetMusicVolume(float volume)
     {
+        musicVolume = volume;
         foreach (Audio a in AudioManager.instance.music)
         {
             a.source.volume = volume;

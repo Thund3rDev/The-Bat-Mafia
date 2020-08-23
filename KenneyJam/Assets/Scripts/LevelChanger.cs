@@ -19,11 +19,6 @@ public class LevelChanger : MonoBehaviour {
         anim = GetComponent<Animator>();
     }
 
-    private void Update()
-    {
-        //SoundsManager._instance.levelChangerVolume = soundLevel;
-    }
-
     public void FadeToLevel(int levelIndex)
     {
         levelToLoad = levelIndex;
