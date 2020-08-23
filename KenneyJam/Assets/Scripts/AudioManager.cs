@@ -95,7 +95,7 @@ public class AudioManager : MonoBehaviour
                 return;
             }
             if (action == "play")
-                a.source.PlayOneShot(a.clip);
+                a.source.Play();
             else if (action == "stop")
                 a.source.Stop();
             else if (action == "pause")
@@ -112,7 +112,7 @@ public class AudioManager : MonoBehaviour
                 return;
             }
             if (action == "play")
-                a.source.PlayOneShot(a.clip);
+                a.source.Play();
             else if (action == "stop")
                 a.source.Stop();
             else if (action == "pause")

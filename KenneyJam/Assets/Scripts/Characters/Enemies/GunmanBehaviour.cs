@@ -160,6 +160,8 @@ public class GunmanBehaviour : EnemyBehaviour
             bulletSpawner.position, Quaternion.identity);
         newBullet.GetComponent<BulletBehaviour>().Shoot(
             ((Vector2)(player.position - bulletSpawner.position)).normalized, bulletVelocity);
+
+        AudioManager.instance.PlaySound("bullet");
     }
 
     private void OnDrawGizmosSelected()

@@ -39,6 +39,7 @@ public class CharacterBehaviour : MonoBehaviour
         rb.freezeRotation = true;
         rb.velocity = Vector2.zero;
         rb.AddForce(force);
+        AudioManager.instance.PlaySound("enemyHit");
     }
 
     #endregion

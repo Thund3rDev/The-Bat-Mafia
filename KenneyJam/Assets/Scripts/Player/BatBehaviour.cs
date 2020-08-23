@@ -29,7 +29,7 @@ public class BatBehaviour : MonoBehaviour
 
         PlayerController.instance.isAttacking = true;
         anim.Play("Base Layer.BatAnimation");
-        //SoundsManager._instance.PlaySoundBat();
+        AudioManager.instance.PlaySound("batHit");
     }
 
     public void StopAttacking()
