@@ -70,7 +70,7 @@ public class AllyBehaviour : CharacterBehaviour
     /// </summary>
     private void FixedUpdate()
     {
-        if (isDying)
+        if (isDying || GameManager._instance.isEnding)
             return;
 
         // Move and rotate the ally

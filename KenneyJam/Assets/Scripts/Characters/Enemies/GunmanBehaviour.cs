@@ -48,7 +48,11 @@ public class GunmanBehaviour : EnemyBehaviour
     private void Update()
     {
         if (isDying || GameManager._instance.isEnding)
+        {
+            if (GameManager._instance.isEnding)
+                rb.velocity = Vector2.zero;
             return;
+        }
 
         switch(state)
         {
@@ -90,7 +94,7 @@ public class GunmanBehaviour : EnemyBehaviour
 
     private void FixedUpdate()
     {
-        if (isDying)
+        if (isDying || GameManager._instance.isEnding)
             return;
 
         switch (state)

@@ -24,6 +24,17 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI timeText;
     [SerializeField] private TextMeshProUGUI enemiesKilledText;
     [SerializeField] private TextMeshProUGUI alliesKilledText;
+
+    [Space]
+
+    [SerializeField] private GameObject endScreen;
+    [SerializeField] private TextMeshProUGUI resultTitleText;
+    [SerializeField] private TextMeshProUGUI resultText;
+    [SerializeField] private GameObject results;
+    [SerializeField] private TextMeshProUGUI enemiesKilledTextEnd;
+    [SerializeField] private TextMeshProUGUI alliesKilledTextEnd;
+    [SerializeField] private TextMeshProUGUI timeTextEnd;
+    [SerializeField] private TextMeshProUGUI scoreText;
     #endregion
 
     #region Methods
@@ -34,6 +45,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        endScreen.SetActive(false);
         initTime = Time.time;
         numEnemiesKilled = 0;
         numAlliesKilled = 0;
@@ -59,14 +71,34 @@ public class GameManager : MonoBehaviour
 
     public void EndGame(bool died)
     {
-        float finalTime = Time.time - initTime;
-        int timeScore = ((int) Mathf.Round(finalTime - averageTime)) * pointsPerExtraSecond;
-        int enemiesScore = numEnemiesKilled * pointsPerEnemy;
-        int alliesScore = numAlliesKilled * pointsPerAlly;
-        int finalScore = timeScore + enemiesScore + alliesScore;
-        finalScore = Mathf.Max(0, finalScore);
+        if (isEnding)
+            return;
 
+        isEnding = true;
+        endScreen.SetActive(true);
+        if (died)
+        {
+            results.SetActive(false);
+            resultTitleText.text = "You lost!";
+            resultText.text = "The Bat Mafia has killed you and got the demon bat back.";
+        }
+        else
+        {
+            int finalTime = (int) Mathf.Round((Time.time - initTime) - averageTime);
+            int timeScore = finalTime * pointsPerExtraSecond;
+            int enemiesScore = numEnemiesKilled * pointsPerEnemy;
+            int alliesScore = numAlliesKilled * pointsPerAlly;
+            int finalScore = timeScore + enemiesScore + alliesScore;
+            finalScore = Mathf.Max(0, finalScore);
 
+            results.SetActive(true);
+            resultTitleText.text = "You won!";
+            resultText.text = "You defeated the Bat Mafia and got rid of the curse.";
+            enemiesKilledTextEnd.text = numEnemiesKilled.ToString();
+            alliesKilledTextEnd.text = numAlliesKilled.ToString();
+            timeTextEnd.text = finalTime.ToString();
+            scoreText.text = finalScore.ToString();
+        }
     }
     #endregion
 }
