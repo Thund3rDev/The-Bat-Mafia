@@ -51,8 +51,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 2055405787767336065}
   rb: {fileID: 2055405787767336064}
-  firstShotDelay: 0.5
-  timeBetweenShot: 1.5
+  firstShotDelay: 1
+  timeBetweenShot: 2
   bulletVelocity: 5
   distanceToShoot: 5
   rotationLerpValue: 0.5
@@ -60,8 +60,8 @@ MonoBehaviour:
   minDistToChangeTarget: 0.2
   visionAngle: 135
   positionsToWander:
-  - {x: 12.64, y: 4.19}
-  - {x: 14.78, y: 3.9}
+  - {x: -7.36, y: 4.19}
+  - {x: -4.11, y: 2.39}
   bulletSpawner: {fileID: 2055405789095946523}
   bulletPrefab: {fileID: 6657501557448914972, guid: e813890207182474cb1141385f5e3fdb,
     type: 3}

@@ -16,14 +16,6 @@ public class MenuController : MonoBehaviour
     }
 
     /// <summary>
-    /// Method ButtonSound, that plays the button sound
-    /// </summary>
-    public void ButtonSound()
-    {
-        AudioManager.instance.ManageAudio("buttonSound", "sound", "play");
-    }
-
-    /// <summary>
     /// Method SetMusicVolume, that change volume of all music in game
     /// </summary>
     /// <param name="volume">New volume value</param>

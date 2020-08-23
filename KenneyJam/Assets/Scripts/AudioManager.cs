@@ -121,4 +121,14 @@ public class AudioManager : MonoBehaviour
                 a.source.UnPause();
         }
     }
+
+    public void PlaySound(string name)
+    {
+        ManageAudio(name, "sound", "play");
+    }
+
+    public void StopSound(string name)
+    {
+        ManageAudio(name, "sound", "stop");
+    }
 }
