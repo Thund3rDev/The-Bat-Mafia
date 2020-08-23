@@ -3893,7 +3893,7 @@ MonoBehaviour:
   music:
   - name: mainTheme
     clip: {fileID: 8300000, guid: 6fa13ac5804428c40a2aab61daaead7f, type: 3}
-    volume: 1
+    volume: 0
     pitch: 1
     loop: 0
     source: {fileID: 0}
