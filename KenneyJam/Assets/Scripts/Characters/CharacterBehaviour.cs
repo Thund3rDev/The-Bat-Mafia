@@ -34,8 +34,11 @@ public class CharacterBehaviour : MonoBehaviour
 
     public void Push(Vector2 force)
     {
-        rb.AddForce(force);
+        if (isDying)
+            return;
         rb.freezeRotation = true;
+        rb.velocity = Vector2.zero;
+        rb.AddForce(force);
     }
 
     #endregion

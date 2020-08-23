@@ -45,6 +45,8 @@ public class BatBehaviour : MonoBehaviour
         if (collision.CompareTag("Character"))
         {
             CharacterBehaviour cb = collision.GetComponent<CharacterBehaviour>();
+            if (cb.IsDying())
+                return;
             cb.Push(((Vector2)(collision.transform.position - player.position)).normalized * pushForce);
             cb.Die();
         }

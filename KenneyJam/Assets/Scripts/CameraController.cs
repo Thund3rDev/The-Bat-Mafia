@@ -14,6 +14,8 @@ public class CameraController : MonoBehaviour
     #region Methods
     private void Update()
     {
+        if (GameManager._instance.isEnding)
+            return;
         //Debug.Log(Input.mousePosition + " --- " + Screen.width + " " + Screen.height);
         targetDir = (Vector2) Input.mousePosition - new Vector2(Screen.width / 2, Screen.height / 2);
         targetDir.x = Mathf.Clamp(targetDir.x, -Screen.width / 2, Screen.width / 2);
